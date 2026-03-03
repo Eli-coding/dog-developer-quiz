@@ -1,0 +1,321 @@
+/* Custom Fonts */
+@font-face {
+  font-family: 'Warzone';
+  src: url('/src/assets/fonts/CF-Bad-Cops-Font/WARZONE 99.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BadCops';
+  src: url('/src/assets/fonts/CF-Bad-Cops-Font/CFBadCops-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Wartorn';
+  src: url('/src/assets/fonts/CF-Bad-Cops-Font/WARTORN_.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Color Palette - EDGY EDITION */
+:root {
+  --primary-color: #FFD700;        /* Yellow-gold accent */
+  --secondary-color: #F5F5DC;      /* Off-white/cream */
+  --accent-color: #FFD700;         /* Yellow-gold */
+  --dark-text: #F5F5DC;            /* Off-white for text */
+  --light-text: #CCCCCC;           /* Light gray */
+  --background: #000000;           /* Pure black */
+  --card-bg: #1A1A1A;              /* Very dark gray for cards */
+  --success: #FFD700;              /* Gold */
+  --error: #FF4444;                /* Red */
+  --border: #333333;               /* Dark gray borders */
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Warzone', sans-serif;
+  background-color: var(--background);
+  color: var(--dark-text);
+  line-height: 1.6;
+}
+
+/* Headings - BadCops Font */
+h1, h3 {
+  font-family: 'BadCops', impact, sans-serif;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 4rem;
+  color: var(--secondary-color);
+  
+}
+
+h2 {
+
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-family: 'Wartorn';
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+/* Body text - Warzone font */
+p, li, button {
+  font-family: 'Warzone', sans-serif;
+}
+
+/* Code-like text (monospace for error messages) */
+.monospace {
+  font-family: 'Courier New', monospace;
+  background-color: #222222;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid var(--primary-color);
+}
+
+/* Buttons - EDGY STYLE */
+button {
+  font-family: 'BadCops', impact, sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+button:hover::before {
+  left: 0;
+}
+
+button:hover {
+  color: var(--background);
+  transform: translateY(-2px);
+
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--background);
+  color: var(--primary-color);
+  padding: 18px 50px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--primary-color);
+  color: var(--background);
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: 3px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--background);
+  color: var(--primary-color);
+}
+
+/* Answer Button - EDGY */
+.answer-button {
+  background-color: var(--card-bg);
+  color: var(--secondary-color);
+  padding: 20px 25px;
+  font-size: 1rem;
+  text-align: left;
+  border: 2px solid var(--border);
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 0;
+  position: relative;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: 'Warzone', sans-serif;
+}
+
+.answer-button::before {
+  content: '▸';
+  position: absolute;
+  left: 10px;
+  color: var(--primary-color);
+  opacity: 0;
+  transition: opacity 0.3s, left 0.3s;
+}
+
+.answer-button:hover {
+  border-color: var(--primary-color);
+  background-color: #222222;
+  padding-left: 40px;
+}
+
+.answer-button:hover::before {
+  opacity: 1;
+  left: 15px;
+}
+
+/* Card Styles - DARK */
+.card {
+  background-color: var(--card-bg);
+  border: 3px solid var(--primary-color);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Progress Bar - GOLD */
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background-color: var(--border);
+  border: 2px solid var(--primary-color);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Dog Bite Frame for Loading */
+.dog-bite-frame {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-bite-frame img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bite-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Bouncing Dog Animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.bouncing-dog {
+  animation: bounce 1s infinite;
+  display: inline-block;
+  font-size: 5rem;
+}
+
+/* Pulse Animation for Loading Dots */
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.loading-dot {
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Paw Print Bullets */
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: '☠️';
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+/* Glow effect for headings */
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .card {
+    padding: 25px;
+    border-width: 2px;
+  }
+  
+  .answer-button {
+    font-size: 0.9rem;
+    padding: 16px 20px;
+  }
+  
+  .dog-bite-frame {
+    width: 90%;
+    height: 300px;
+  }
+}

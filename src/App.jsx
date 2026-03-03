@@ -71,7 +71,7 @@ function App() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      backgroundColor: '#f5f5f5',
+      backgroundColor: '#000000',
       fontFamily: 'Arial, sans-serif'
     }}>
       {screen === 'welcome' && (
