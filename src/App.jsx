@@ -4,9 +4,10 @@ import Question from './components/Questions';
 import Results from './components/Results';
 import { questions } from './data/questions';
 import { dogTypes } from './data/dogTypes';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
-  const [screen, setScreen] = useState('welcome'); // welcome, quiz, results
+  const [screen, setScreen] = useState('welcome'); // welcome, quiz, loading, results
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState({
     puppy: 0,
@@ -48,7 +49,7 @@ function App() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setScreen('results');
+      setScreen('loading');
     }
   };
 
@@ -84,6 +85,10 @@ function App() {
           totalQuestions={questions.length}
           onAnswer={handleAnswer}
         />
+      )}
+
+      {screen === 'loading' && (
+        <LoadingScreen onComplete={() => setScreen('results')} />
       )}
       
       {screen === 'results' && (
