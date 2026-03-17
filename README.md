@@ -50,6 +50,7 @@ Built as a React project to practice component architecture, props, and conditio
 
 ```
 src/
+├──assets/            # Fonts used in Quiz
 ├── components/       # Reusable UI components
 ├── data/             # Quiz questions and breed result data
 ├── App.jsx           # Root component and quiz state logic
@@ -77,9 +78,8 @@ npm run dev
 ## Roadmap
 
 - [ ] Shareable results via URL encoding (in progress)
-- [ ] Custom dog breed illustrations (Procreate)
 - [ ] Animated result reveal
-- [ ] Social share buttons (Twitter/X, LinkedIn)
+- [ ] Social share buttons (LinkedIn)
 
 ---
 
