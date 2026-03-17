@@ -1,16 +1,89 @@
-# React + Vite
+# 🐕 I heard you Like a Dog?
+### A developer personality quiz that matches your coding style to a dog breed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[Live Demo](https://dog-developer-quiz.vercel.app)** | Built with React + Vite | Deployed on Vercel
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About
 
-## React Compiler
+A fun, interactive personality quiz that asks developers questions about their coding habits and reveals which dog breed matches their style. Nine possible results, each mapped to a real developer archetype — from the methodical Border Collie to the scrappy Jack Russell.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Built as a React project to practice component architecture, props, and conditional rendering in a real deployed application.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- 9 unique dog breed developer archetypes
+- Multi-question quiz with scored result logic
+- Result screen with breed description and developer personality breakdown
+- Custom black/gold/off-white styling
+- Fully responsive design
+- Deployed and shareable via Vercel
+
+---
+
+## Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| Framework | React 18 |
+| Build Tool | Vite |
+| Styling | CSS3 (custom, no UI library) |
+| Deployment | Vercel |
+| Version Control | GitHub |
+
+---
+
+## React Concepts Used
+
+- Functional components
+- Props and component composition
+- Conditional rendering (quiz flow → result screen)
+- State management with `useState`
+- Component-driven UI architecture
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable UI components
+├── data/             # Quiz questions and breed result data
+├── App.jsx           # Root component and quiz state logic
+└── main.jsx          # Entry point
+```
+
+---
+
+## Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/Eli-coding/dog-developer-quiz.git
+
+# Install dependencies
+cd dog-developer-quiz
+npm install
+
+# Run locally
+npm run dev
+```
+
+---
+
+## Roadmap
+
+- [ ] Shareable results via URL encoding (in progress)
+- [ ] Custom dog breed illustrations (Procreate)
+- [ ] Animated result reveal
+- [ ] Social share buttons (Twitter/X, LinkedIn)
+
+---
+
+## Author
+
+**Elizabeth Rodriguez**
+[GitHub](https://github.com/Eli-coding) · [LinkedIn](https://linkedin.com/in/elizabeth-rodriguez-cardona)
