@@ -1,4 +1,4 @@
-# 🐕 I heard you Like a Dog?
+# 🐕 I heard you code like a Dog?
 ### A developer personality quiz that matches your coding style to a dog breed
 
 **[Live Demo](https://dog-developer-quiz.vercel.app)** | Built with React + Vite | Deployed on Vercel
