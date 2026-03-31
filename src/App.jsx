@@ -5,9 +5,14 @@ import Results from './components/Results';
 import { questions } from './data/questions';
 import { dogTypes } from './data/dogTypes';
 import LoadingScreen from './components/LoadingScreen';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 function App() {
-  const [screen, setScreen] = useState('welcome'); // welcome, quiz, loading, results
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const sharedId = searchParams.get('id');
+  const [resultDog, setResultDog] = useState(null);
+  const [screen, setScreen] = useState(sharedId ?'results':'welcome'); // welcome, quiz, loading, results
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState({
     puppy: 0,
@@ -20,6 +25,19 @@ function App() {
     beagle: 0,
     greyhound: 0
   });
+
+  
+  const calculateResult = (newScores) => {
+  let maxScore = 0;
+  let result = 'puppy';
+  Object.keys(newScores).forEach(dog => {
+    if (newScores[dog] > maxScore) {
+      maxScore = newScores[dog];
+      result = dog;
+    }
+  });
+  return result;
+  };
 
   const startQuiz = () => {
     setScreen('quiz');
@@ -37,6 +55,8 @@ function App() {
     });
   };
 
+
+
   const handleAnswer = (points) => {
     // Add points to the appropriate dog type
     const newScores = { ...scores };
@@ -49,25 +69,13 @@ function App() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setScreen('loading');
-    }
-  };
+    const result = calculateResult(newScores);
+    setResultDog(result);
+    navigate(`/result?id=${result}`);
+    setScreen('loading');
+}};
 
-  const calculateResult = () => {
-    // Find dog type with highest score
-    let maxScore = 0;
-    let resultDog = 'puppy';
-    
-    Object.keys(scores).forEach(dog => {
-      if (scores[dog] > maxScore) {
-        maxScore = scores[dog];
-        resultDog = dog;
-      }
-    });
-    
-    return dogTypes[resultDog];
-  };
-
+ 
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -93,7 +101,7 @@ function App() {
       
       {screen === 'results' && (
         <Results
-          dogType={calculateResult()}
+          dogType={dogTypes[resultDog]}
           onRetake={startQuiz}
         />
       )}

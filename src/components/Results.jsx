@@ -1,4 +1,25 @@
+import { dogTypes } from '../data/dogTypes';
+import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+
 function Results({ dogType, onRetake }) {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+  const dog = id ? dogTypes[id] : dogType;
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleWhatsApp = () => {
+    const url = window.location.href;
+    window.open(`https://wa.me/?text=I code like ${dog.name}. Find out which dog developer you are! ${url}`);
+  };
+
   return (
     <div style={{ 
       minHeight: '100vh',
@@ -8,7 +29,7 @@ function Results({ dogType, onRetake }) {
     }}>
       <div className="card" style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: '3.5rem', marginBottom: '30px' }}>
-          {dogType.name}
+          {dog.name}
         </h1>
         
         <p style={{ 
@@ -21,35 +42,23 @@ function Results({ dogType, onRetake }) {
           paddingLeft: '20px',
           textAlign: 'left'
         }}>
-          {dogType.description}
+          {dog.description}
         </p>
         
         <div style={{ textAlign: 'left', marginBottom: '50px' }}>
-          <h3 style={{ color: '#51CF66', marginBottom: '20px' }}>
-            STRENGTHS:
-          </h3>
+          <h3 style={{ color: '#51CF66', marginBottom: '20px' }}>STRENGTHS:</h3>
           <ul style={{ marginLeft: '20px', marginBottom: '40px' }}>
-            {dogType.strengths.map((strength, i) => (
-              <li key={i} style={{ 
-                marginBottom: '12px', 
-                fontSize: '1.1rem',
-                color: '#F5F5DC'
-              }}>
+            {dog.strengths.map((strength, i) => (
+              <li key={i} style={{ marginBottom: '12px', fontSize: '1.1rem', color: '#F5F5DC' }}>
                 {strength}
               </li>
             ))}
           </ul>
           
-          <h3 style={{ color: '#FF6B6B', marginBottom: '20px' }}>
-            WEAKNESSES:
-          </h3>
+          <h3 style={{ color: '#FF6B6B', marginBottom: '20px' }}>WEAKNESSES:</h3>
           <ul style={{ marginLeft: '20px', marginBottom: '40px' }}>
-            {dogType.weaknesses.map((weakness, i) => (
-              <li key={i} style={{ 
-                marginBottom: '12px', 
-                fontSize: '1.1rem',
-                color: '#F5F5DC'
-              }}>
+            {dog.weaknesses.map((weakness, i) => (
+              <li key={i} style={{ marginBottom: '12px', fontSize: '1.1rem', color: '#F5F5DC' }}>
                 {weakness}
               </li>
             ))}
@@ -63,48 +72,44 @@ function Results({ dogType, onRetake }) {
             fontSize: '1.2rem',
             color: '#FFD700'
           }}>
-            {dogType.famousFor}
+            {dog.famousFor}
           </p>
           
-          {/* <h3 style={{ marginBottom: '15px', color:'#FF6B6B' }}>ERROR MESSAGE STYLE:</h3>
-          <div style={{ 
-            backgroundColor: '#1a0000', 
-            padding: '25px', 
-            border: '2px solid #FF6B6B',
-            fontFamily: 'Courier New, monospace',
-            marginLeft: '20px',
-            marginBottom: '40px',
-            color: '#FF6B6B',
-            fontSize: '1rem'
-          }}>
-            {dogType.errorMessage}
-          </div> */}
-          
-          {dogType.encouragement && (
+          {dog.encouragement && (
             <div style={{ 
               marginTop: '40px', 
               padding: '30px', 
               backgroundColor: '#0a1a0a',
               border: '2px solid #51CF66'
             }}>
-              <p style={{ 
-                margin: 0, 
-                fontWeight: 'bold',
-                fontSize: '1.2rem',
-                color: '#51CF66'
-              }}>
-                💚 {dogType.encouragement}
+              <p style={{ margin: 0, fontWeight: 'bold', fontSize: '1.2rem', color: '#51CF66' }}>
+                💚 {dog.encouragement}
               </p>
             </div>
           )}
         </div>
-        
-        <button
-          onClick={onRetake}
-          className="btn-secondary"
-        >
-          BITE BACK
-        </button>
+
+        {/* BUTTONS ROW */}
+        <div style={{ 
+          display: 'flex', 
+          gap: '16px', 
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          marginTop: '20px'
+        }}>
+          <button onClick={handleCopyLink} className="btn-secondary">
+            {copied ? '✅ LINK COPIED!' : '🔗 COPY LINK'}
+          </button>
+
+          <button onClick={handleWhatsApp} className="btn-secondary">
+            💬 WHATSAPP
+          </button>
+
+          <button onClick={onRetake} className="btn-secondary">
+            🐾 BITE BACK
+          </button>
+        </div>
+
       </div>
     </div>
   );
