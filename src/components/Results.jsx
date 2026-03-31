@@ -98,11 +98,7 @@ function Results({ dogType, onRetake }) {
           marginTop: '20px'
         }}>
           <button onClick={handleCopyLink} className="btn-secondary">
-            {copied ? '✅ LINK COPIED!' : '🔗 COPY LINK'}
-          </button>
-
-          <button onClick={handleWhatsApp} className="btn-secondary">
-            💬 WHATSAPP
+            {copied ? '✅ LINK COPIED!' : 'Share with the pack 🔗'}
           </button>
 
           <button onClick={onRetake} className="btn-secondary">
