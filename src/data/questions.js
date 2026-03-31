@@ -26,7 +26,8 @@ export const questions = [
       { text: "Isolate issue, fix, done", points: { corgi: 1 } },
       { text: "Carefully add logging, terrified I'll break something else", points: { dane: 1 } },
       { text: "Start debugging X, discover Y is also broken, investigate Z, forget what X was", points: { beagle: 1 } },
-      { text: "Try 5 things rapidly, one works, ship it", points: { greyhound: 1 } }
+      { text: "Try 5 things rapidly, one works, ship it", points: { greyhound: 1 } },
+      { text: "Borrala, le pegas fuego y le hechas agua bendita, eso puede que solucione el problema 🤣", points:{husky:1,chihuahua:1,corgi:1}}
     ]
   },
   {
