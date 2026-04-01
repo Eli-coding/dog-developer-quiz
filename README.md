@@ -77,8 +77,7 @@ npm run dev
 
 ## Roadmap
 
-- [ ] Shareable results via URL encoding (in progress)
-- [ ] Social share buttons (LinkedIn)
+- [ ] Shareable results via URL encoding
 
 ---
 
